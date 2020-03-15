@@ -1,7 +1,7 @@
 {
   "name": "trafficlight",
   "version": "1.0.0",
-  "description": "Simple boilerplate for starting project with vue and vue-router",
+  "description": "trueconf test task",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --mode development --open",
@@ -10,19 +10,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CoonJS/vue-vue-router-simple-boilerplate.git"
+    "url": ""
   },
   "keywords": [
     "vue",
     "vue-router",
     "webpack"
   ],
-  "author": "babanov.js@gmail.com",
+  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/CoonJS/vue-vue-router-simple-boilerplate/issues"
-  },
-  "homepage": "https://github.com/CoonJS/vue-vue-router-simple-boilerplate#readme",
+  
+  "homepage": "",
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "@babel/plugin-proposal-class-properties": "^7.0.0",

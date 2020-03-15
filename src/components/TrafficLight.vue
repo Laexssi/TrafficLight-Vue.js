@@ -1,6 +1,6 @@
 <template>
   <div class="trafficlight">
-    <Light v-for="color in colors" :key="color" :class="color" :time="time" :active="color === currentColor"/>
+    <light v-for="color in colors" :key="color" :class="color" :time="time" :active="color === currentColor"/>
   </div>
 </template>
 
@@ -20,26 +20,20 @@ export default {
     };
   },
   props: {
-    color: {
-      type: String
-    },
-    duration: {
-      type: Number
-    }
+    color: String,
+    duration: Number
   },
-  created: function() {
-    this.time = this.duration;
+  mounted: function() {
+    this.time = +localStorage.getItem("time") || this.duration;
     this.startTimer();
     this.currentColor = this.$route.name;
+    this.isAscending = JSON.parse(localStorage.getItem("flag"))|| false;
   },
-computed: {
-  isOn() {
-    return this
-  }
-},
-  watch: {
+watch: {
     $route: function() {
       this.time = this.duration;
+      //for manual changes in browser's adress line
+      this.currentColor = this.$route.name
     }
   },
 
@@ -48,8 +42,8 @@ computed: {
       const timerId = setInterval(this.countDown, 1000);
     },
     countDown() {
-      this.time--;
-      console.log(this.currentColor);
+      this.time--; 
+      localStorage.setItem("time", this.time)
       if (this.time === 0) {
         this.setNextColor(this.currentColor);
         this.$router.push(this.currentColor);
@@ -58,27 +52,20 @@ computed: {
     setNextColor(currentColor) {
       if (this.currentColor === "red") this.isAscending = false;
       if (this.currentColor === "green") this.isAscending = true;
-      const nextAscendingColor = color => {
+      localStorage.setItem('flag', this.isAscending);
+      const nextColor = (color, flag) => {
         switch (color) {
           case "green":
             return "yellow";
-          case "yellow":
-            return "red";
-        }
-      };
-      const nextDescendingColor = color => {
-        switch (color) {
           case "red":
-            return "yellow";
+            return "yellow"
           case "yellow":
-            return "green";
+            return flag ? "red" : "green"
         }
-      };
-      
-      this.currentColor = this.isAscending
-        ? nextAscendingColor(currentColor)
-        : nextDescendingColor(currentColor);
-    }
+      }
+      this.currentColor = nextColor(currentColor, this.isAscending)
+    },
+
   }
 };
 </script>
@@ -88,8 +75,12 @@ computed: {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 50px;
-  border: 5px solid black;
+  padding: 25px;
+  border: 5px solid rgb(24, 23, 23);
+  width: 100px;
+  margin: 0 auto;
+  border-radius: 25px;
+  background-color: rgb(24, 23, 23);
 }
 
 .red {

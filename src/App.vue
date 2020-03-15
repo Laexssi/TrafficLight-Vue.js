@@ -8,11 +8,12 @@
 <script>
 </script>
 
-<style scoped>
+<style>
 .container {
   width: 768px;
   margin: 0 auto;
   background-color: rgb(255, 255, 255);
+  font-family: "verdana", sans-serif;
 }
 h1 {
   text-align: center;
