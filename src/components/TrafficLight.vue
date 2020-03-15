@@ -1,6 +1,11 @@
 <template>
   <div class="trafficlight">
-    <light v-for="color in colors" :key="color" :class="color" :time="time" :active="color === currentColor"/>
+    <light v-for="color in colors"
+    :key="color"
+    :class="color"
+    :time="time"
+    :active="color === currentColor"
+    />
   </div>
 </template>
 
@@ -23,7 +28,7 @@ export default {
     color: String,
     duration: Number
   },
-  mounted: function() {
+  created: function() {
     this.time = +localStorage.getItem("time") || this.duration;
     this.startTimer();
     this.currentColor = this.$route.name;
@@ -39,7 +44,7 @@ watch: {
 
   methods: {
     startTimer() {
-      const timerId = setInterval(this.countDown, 1000);
+      setInterval(this.countDown, 1000);
     },
     countDown() {
       this.time--; 

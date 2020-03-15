@@ -1,27 +1,24 @@
-# Basic vue, vue-router boilerplate for starting projects with webpack4
+# traffic
 
-### start
-
+## Project setup
 ```
-npm install
-npm run start
+yarn install
 ```
 
-> Browser open automatically, If not, then try to open http://localhost:8080/ in your browser
-
-### production
-
+### Compiles and hot-reloads for development
 ```
-npm run build
+yarn serve
 ```
 
-> You will have your production code in `dist` directory
+### Compiles and minifies for production
+```
+yarn build
+```
 
-### preview
+### Lints and fixes files
+```
+yarn lint
+```
 
-![Preview](https://github.com/CoonJS/vue-vue-router-simple-boilerplate/blob/master/src/assets/Preview.png?raw=true "Preview")
-
-
-
-
-"# TrafficLight-Vue.js" 
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
