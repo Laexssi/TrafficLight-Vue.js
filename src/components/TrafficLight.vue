@@ -22,14 +22,15 @@ export default {
       colors: ["red", "yellow", "green"],
       currentColor: "red",
       isAscending: false,
-      time: 0
+      time: 0,
+      timerId: null
     };
   },
   props: {
     color: String,
     duration: Number
   },
-  created: function() {
+  mounted: function() {
     this.time = +localStorage.getItem("time") || this.duration;
     this.startTimer();
     this.currentColor = this.$route.name;
@@ -42,10 +43,14 @@ export default {
       this.currentColor = this.$route.name;
     }
   },
+  //in case of using as child component
+  beforeDestroyed() {
+    clearInterval(this.timerId);
+  },
 
   methods: {
     startTimer() {
-      const timerId = setInterval(this.countDown, 1000);
+      this.timerId = setInterval(this.countDown, 1000);
     },
     countDown() {
       this.time--;
