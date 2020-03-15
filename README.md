@@ -13,7 +13,7 @@
  
  
  Установка: 
- ### `npm start`
+ ### `npm install`
  ### `npm run start`
  
 
