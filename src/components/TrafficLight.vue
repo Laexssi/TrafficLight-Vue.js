@@ -1,6 +1,12 @@
 <template>
   <div class="trafficlight">
-    <light v-for="color in colors" :key="color" :class="color" :time="time" :active="color === currentColor"/>
+    <light
+      v-for="color in colors"
+      :key="color"
+      :class="color"
+      :time="time"
+      :active="color === currentColor"
+    />
   </div>
 </template>
 
@@ -23,17 +29,17 @@ export default {
     color: String,
     duration: Number
   },
-  mounted: function() {
+  created: function() {
     this.time = +localStorage.getItem("time") || this.duration;
     this.startTimer();
     this.currentColor = this.$route.name;
-    this.isAscending = JSON.parse(localStorage.getItem("flag"))|| false;
+    this.isAscending = JSON.parse(localStorage.getItem("flag")) || false;
   },
-watch: {
+  watch: {
     $route: function() {
       this.time = this.duration;
       //for manual changes in browser's adress line
-      this.currentColor = this.$route.name
+      this.currentColor = this.$route.name;
     }
   },
 
@@ -42,8 +48,8 @@ watch: {
       const timerId = setInterval(this.countDown, 1000);
     },
     countDown() {
-      this.time--; 
-      localStorage.setItem("time", this.time)
+      this.time--;
+      localStorage.setItem("time", this.time);
       if (this.time === 0) {
         this.setNextColor(this.currentColor);
         this.$router.push(this.currentColor);
@@ -52,20 +58,19 @@ watch: {
     setNextColor(currentColor) {
       if (this.currentColor === "red") this.isAscending = false;
       if (this.currentColor === "green") this.isAscending = true;
-      localStorage.setItem('flag', this.isAscending);
+      localStorage.setItem("flag", this.isAscending);
       const nextColor = (color, flag) => {
         switch (color) {
           case "green":
             return "yellow";
           case "red":
-            return "yellow"
+            return "yellow";
           case "yellow":
-            return flag ? "red" : "green"
+            return flag ? "red" : "green";
         }
-      }
-      this.currentColor = nextColor(currentColor, this.isAscending)
-    },
-
+      };
+      this.currentColor = nextColor(currentColor, this.isAscending);
+    }
   }
 };
 </script>
