@@ -1,26 +1,22 @@
-# Basic vue, vue-router boilerplate for starting projects with webpack4
+# Тестовое задание
 
 ### start
+Условие задания: https://pastebin.com/6kTNG4ZF.
 
-```
-npm install
-npm run start
-```
-
-> Browser open automatically, If not, then try to open http://localhost:8080/ in your browser
-
-### production
-
-```
-npm run build
-```
-
-> You will have your production code in `dist` directory
-
-### preview
-
-![Preview](https://github.com/CoonJS/vue-vue-router-simple-boilerplate/blob/master/src/assets/Preview.png?raw=true "Preview")
-
+Реализованы 
+ - автоматическое поведение светофора, 
+ - время отсчета до переключения,
+ - анимация мигания за 3 секунды до смены сигнала,
+ - хранение на стороне пользователя информации о таймере и порядке следования сигналов.
+ 
+ При перезагрузке страницы (или при зыкрытии страницы и открытии в новой вкладке)  светофор сохраняет свое состояние. 
+ При ручном изменении маршрута - начинается новый отсчет на выбранном сигнале, но сохраняется порядок следования.
+ 
+ 
+ Установка: 
+ ### `npm start`
+ ### `npm run start`
+ 
 
 
 
