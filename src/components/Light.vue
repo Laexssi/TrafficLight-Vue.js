@@ -1,9 +1,6 @@
 <template>
-  <div
-    class="light"
-    v-bind:class="[active ? 'active' : '', time <= 3 && active ? 'blink' : '']"
-  >
-    <span v-if="active" class="time">{{ time }}</span>
+  <div class="light" v-bind:class="[active? 'active': '', time <= 3 && active? 'blink': '' ]">
+    <span v-if="active" class="time"  >{{time}}</span>
   </div>
 </template>
 

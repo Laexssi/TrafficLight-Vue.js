@@ -5,7 +5,8 @@
   </div>
 </template>
 
-<script></script>
+<script>
+</script>
 
 <style>
 .container {
@@ -18,3 +19,4 @@ h1 {
   text-align: center;
 }
 </style>
+
